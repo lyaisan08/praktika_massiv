@@ -105,12 +105,12 @@ namespace _9
                     poor += name + ", ";
                     hasPoor++;
                 }
-                rating[i] = $"{name},{average:F2}";
+                rating[i] = $"{name}-{average}";
             }
-            var sr = rating.Average(b => Convert.ToDouble(b.Split(',')[1]));
-            foreach(string s in rating)
+            var sr = rating.OrderBy(b => Convert.ToDouble(b.Split('-')[1]));
+            foreach(string s in sr)
             {
-                Console.WriteLine($"  - {s.Split(',')[0]} со средним баллом {s.Split(',')[1]:F2}");
+                Console.WriteLine($"  - {s.Split('-')[0]} со средним баллом {s.Split('-')[1]:F2}");
             }
             Console.WriteLine("Категории студентов:");
             if (hasExcellent > 0)
